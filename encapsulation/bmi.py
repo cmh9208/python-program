@@ -57,9 +57,12 @@ class Bmi(object):
         velues = f'{name} {cm} {kg} {biman}'
         print(f'{title}\n{astar}\n{schema}\n{astar}\n{velues}\n{astar}')
 
-if __name__=="__main__":
-    name = input("이름 : ")
-    cm = float(input("키 : "))
-    kg = float(input("몸무게 : "))
-    bmi = Bmi(name, cm, kg)
-    bmi.execute()
+    @staticmethod
+    def main():
+        name = input("이름 : ")
+        cm = float(input("키 : "))
+        kg = float(input("몸무게 : "))
+        bmi = Bmi(name, cm, kg)
+        bmi.execute()
+
+Bmi.main()
