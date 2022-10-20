@@ -50,7 +50,7 @@ class Grade(object):
         astar = "*"*40
         schema = "이름 국어 영어 수학 총점 평균 학점"
         velues = f"{name} {ko} {en} {ma} {self.get_total()} {self.get_avg()} {self.grade()}"
-        print(f"{schema}\n{astar}\n{velues}")
+        print(f"{schema}\n{velues}\n{astar}")
 
     @staticmethod
     def get_grade(ls):
@@ -91,5 +91,6 @@ class Grade(object):
             elif menu == 4:
                 print("### 성적표 어플 종료 ###")
                 break
+            # 숫자 아니면 되돌아가게
         
 Grade.main()
