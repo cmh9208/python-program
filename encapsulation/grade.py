@@ -14,10 +14,12 @@
 이름 국어 영어 수학 총점 평균 학점
 *******************************
 홍길동 90 90 92 272 90.6 A
+홍길동 90 90 92 272 90.6 A
+홍길동 90 90 92 272 90.6 A
 ********************************
-'''                                       # 인스턴스는 클래스 안에  
-class Grade(object):                      # 생성자는 인스턴스를 만든다.
-    def __init__(self, name, ko, en, ma): # 생성자(클래스안)로 들어간 데이터는 property가 된다.
+'''                                         
+class Grade(object):                      
+    def __init__(self, name, ko, en, ma): 
         self.name = name
         self.ko = ko
         self.en = en
@@ -39,25 +41,55 @@ class Grade(object):                      # 생성자는 인스턴스를 만든�
         elif avg >= 50: h = "E학점"
         else: h = "F학점"
         return h
-
+    
     def print_grade(self):
         name = self.name
         ko = self.ko
         en = self.en
         ma = self.ma
-        title = "### 성적표 ###"
         astar = "*"*40
         schema = "이름 국어 영어 수학 총점 평균 학점"
         velues = f"{name} {ko} {en} {ma} {self.get_total()} {self.get_avg()} {self.grade()}"
-        print(f"{title}\n{astar}\n{schema}\n{astar}\n{velues}\n{astar}")
+        print(f"{schema}\n{astar}\n{velues}")
 
-    @staticmethod # 스태틱은 클래스것이 아님
-    def main():
+    @staticmethod
+    def get_grade(ls):
+        for i in ls:
+            i.print_grade()
+
+    @staticmethod
+    def new_grade():
         name = input("이름: ")
         ko = int(input("국어: "))
         en = int(input("영어: "))
         ma = int(input("수학: "))
-        grade = Grade(name, ko, en, ma) # 인스턴스 = 생성자다
-        grade.print_grade()
+        return Grade(name, ko, en, ma)
+
+    @staticmethod
+    def print_menu():
+        print("1. 성적표 등록")
+        print("2. 성적표 출력")
+        print("3. 성적표 삭제")
+        print("4. 성적표 종료")
+        menu = input("메뉴선택")
+        return int(menu)
+
+    @staticmethod # 스태틱은 클래스것이 아님
+    def main():
+        ls = []
+        while True:
+            menu = Grade.print_menu()
+            if menu == 1:
+                print("### 성적표 등록 ###")
+                grade = Grade.new_grade()
+                ls.append(grade)
+            elif menu == 2:
+                print("### 성적표 출력 ###")
+                grade.get_grade(ls) 
+            elif menu == 3:
+                print("### 성적표 삭제 ###")
+            elif menu == 4:
+                print("### 성적표 어플 종료 ###")
+                break
         
 Grade.main()

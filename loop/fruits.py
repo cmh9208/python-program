@@ -8,24 +8,28 @@
 2번과일: 사과
 3번과일: 망고
 ********************************
+구매할 과일: 바
 '''
 class Fruits(object):
-    def __init__(self):
+    def __init__(self,name):
       self.menu = ["바나나", "사과", "망고"]
-
+      self.name = name
+    
     def pprint(self):
         print("### 과일번호표 ###")
         print("*"*40)
-        j = 0
-        for i in self.menu:
-            print(f"{j+1}번과일: {i}")
-            j+=1
+        if self.name[:1] == "바":
+            print(f'1번과일: {"바나나"}')
+        elif self.name[:1] == "사":
+            print(f'2번과일: {"사과"}')    
+        elif self.name[:1] == "망":
+            print(f'3번과일: {"망고"}')   
         print("*"*40)
 
     @staticmethod
     def ddd():
-        ddd = Fruits()
+        name = input("구매할 과일: ")
+        ddd = Fruits(name)
         ddd.pprint()
 
 Fruits.ddd()
-
